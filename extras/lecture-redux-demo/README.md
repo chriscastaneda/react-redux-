@@ -1,4 +1,4 @@
-2:01:37
+4:17:26
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +44,31 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Notes:
+--------
+Implementing:
+App level:
+	1. define stateStore (mostly same with all apps)
+	2. State index file -updates all new states
+Per State Category
+	1.Reducer -producess actions to effect state
+	2.Actions -actions that can be produced
+	3.Dispatcher -functions invoke actions
+	4.Update state index file
+Per State Component
+	1. wrap component in Higher Order functs. provide action dispatchers& state
+ 
+
+Dependencies:
+npm install redux
+npm install react-redux
+npm install redux-thunk
+
+Application State vs Component State:
+-Application State: states effect entire app(view or behavior of components) 
+ex: submitting form
+
+-Component State: temparary states used by only 1 component(no reason to use in stateStore). 
+ex: filling out form
