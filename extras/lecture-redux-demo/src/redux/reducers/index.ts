@@ -1,6 +1,7 @@
 import { Pokemon } from "../models/Pokemon";
 import { combineReducers } from "redux";
 import { ClickerReducer } from './clicker.reducer';
+import { pokemonReducer } from "./pokemon.reducer";
 /**Interfaces for all states in app */
 
 
@@ -8,7 +9,7 @@ import { ClickerReducer } from './clicker.reducer';
 /**Combine States */
 export interface IState{
     clickerState: ClickerState;
-    pokeomStoreState: PokemonStoreState;
+    pokemonStoreState: PokemonStoreState;
 };
 
 /**define state */
@@ -18,11 +19,12 @@ export interface ClickerState {
 
 /**define state */
 export interface PokemonStoreState{
-    lastPurchase: Pokemon; //clikcer
-    collectedPokemon: Pokemon[]; //pokedex
+    lastPurchase: Pokemon | undefined; //clikcer page
+    collectedPokemon: Pokemon[]; //pokedex page
 };
 
 /*reducer.ts files */
-export const state= combineReducers({
-    ClickerReducer
+export const state = combineReducers({
+    clickerState: ClickerReducer,
+    pokemonStoreState: pokemonReducer
 });

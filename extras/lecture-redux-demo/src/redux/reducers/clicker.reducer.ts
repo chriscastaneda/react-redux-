@@ -9,22 +9,22 @@ const initialState: ClickerState = {
     clicks: 0
 };
 
-/**Reducer: except action, make changes */
+/**Reducer: excepts action, make changes  from clikcer.action.ts*/
 export const ClickerReducer = (state: ClickerState =initialState, action: ClickerActionPayload & Action)=> {
     //React & define on actions
     switch(action.type) {
         case clickerActionTypes.ADD_CLICKS: {
             return {
-                ...state,
-                clicks: state.clicks + action.payload.clicks
+                ...state, //existing state
+                clicks: state.clicks + action.payload.clicks //+ click counter
             };
         };
         case clickerActionTypes.REMOVE_CLICKS: {
             return {
-                ...state,
-                clicks: state.clicks - action.payload.clicks
+                ...state, //existing state
+                clicks: state.clicks - action.payload.clicks //- click counter
             };
         };
-        default: return state;
+        default: return state;  //return current state
     };
 };

@@ -15,8 +15,8 @@ const useStyles = makeStyles({
   });
   
   interface PokemonCardProps{
-      pokeName:string;
-      pokeImg: string;
+      pokeName?:string;
+      pokeImg?: string;
   }
 
 export const PokemonCardComponent: React.FC<PokemonCardProps> = ({pokeName, pokeImg})=> {

@@ -1,24 +1,42 @@
 import React from 'react';
 import { PokemonCardComponent } from './pokemon-card.component';
 import { Typography, Grid } from '@material-ui/core';
+import { IState } from '../../redux/reducers';
+import { connect } from 'react-redux';
+import { Pokemon } from '../../redux/models/Pokemon';
 
-export const DisplayComponent:React.FC = ()=> {
+interface DisplayComponentProps{
+    pokemon: Pokemon[]
+}
 
-    const data = ['Fletchinder', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/662.png'];
-    const iterations = [1,2,3,4,5];
-    
+export const DisplayComponent:React.FC<DisplayComponentProps> = (props)=> {    
     return(
     <section>
         <Typography variant="h1" component="h2" gutterBottom>Pokedex</Typography>
 
         <Grid container direction="row" spacing={9} alignItems="flex-start">
-            {iterations.map(i => (
+            {props.pokemon.map(p => { return(
                 <Grid item xl={4} sm={4}>
-                    <PokemonCardComponent pokeName={data[0]} pokeImg={data[1]} />
+                    <PokemonCardComponent pokeName={p.name} pokeImg={p.img} />
                 </Grid>
-            ))};
+            )})};
         </Grid>
 
     </section>
     );
 };
+/**REDUX */
+
+
+const mapStateToProps = (state: IState)=> {
+    return{
+        pokemon: state.pokemonStoreState.collectedPokemon
+    };
+};
+
+/**Update, Map actions from props */
+const mapDispatchToProp = {} //not using leave open
+
+export default connect(mapStateToProps, mapDispatchToProp)(DisplayComponent);
+
+

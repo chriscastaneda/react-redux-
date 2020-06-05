@@ -1,5 +1,3 @@
-4:17:26
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -72,3 +70,16 @@ ex: submitting form
 
 -Component State: temparary states used by only 1 component(no reason to use in stateStore). 
 ex: filling out form
+
+Installation:
+npm install redux react-redux redux-think
+npm install --save-dev @types/react-redux
+npm install @material-ui/core @material-ui/icons @material-ui/lab
+npm install --save-dev @types/react
+npm install react-router react-router-dom
+npm install --save-dev @types/react-router @types/react-router-dom
+nom install --save-dev @types/react-dom
+npm install --save-dev @types/react-redux
+npm install axios
+React dev tools: Chrome extension
+Redux dev tools: Chrome extension

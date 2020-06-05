@@ -12,14 +12,13 @@ export const clickerActionTypes = {
 
 //Define payload
 export interface ClickerActionPayload {
-    type: String;
     payload: {
         clicks: number; //counter 
     }
 }
 
 /**Dispatchers: bind to components for actions. */
-export const addClicks = (clicks: number)=> (dispatch: Dispatch<ClickerActionPayload>) => {
+export const addClicks = (clicks: number)=> (dispatch: Dispatch<ClickerActionPayload & Action>) => {
     dispatch({ //dispatch action
         type: clickerActionTypes.ADD_CLICKS, //action type defined
         payload: { //payload attached decribing action
@@ -29,7 +28,7 @@ export const addClicks = (clicks: number)=> (dispatch: Dispatch<ClickerActionPay
     });
 };
 
-export const spendClicks = (clicks: number)=> (dispatch: Dispatch<ClickerActionPayload>) => {
+export const removeClicks = (clicks: number)=> (dispatch: Dispatch<ClickerActionPayload & Action>) => {
     dispatch({
         type: clickerActionTypes.REMOVE_CLICKS,
         payload: {

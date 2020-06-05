@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, makeStyles, MenuItem, Menu} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { IState } from '../redux/reducers';
+
+
+/**Render clicks using redux */
+export interface NavComponentProps {
+  clicks: number;
+}
 
 //Material UI code Below
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavComponent: React.FC<RouteComponentProps> = (props)=> {
+export const NavComponent: React.FC<RouteComponentProps & NavComponentProps> = (props)=> {
 
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
   const classes = useStyles();
@@ -26,6 +34,9 @@ export const NavComponent: React.FC<RouteComponentProps> = (props)=> {
         <Toolbar>
         <Typography variant="h6" className={classes.title}>
           Clicker Store
+        </Typography>
+        <Typography variant="h6">
+          Clicks: {props.clicks}
         </Typography>
         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
           onClick={(e: React.MouseEvent<HTMLButtonElement>)=> setMenuAnchor(e.currentTarget)}>
@@ -47,5 +58,15 @@ export const NavComponent: React.FC<RouteComponentProps> = (props)=> {
     </AppBar>
   );
 };
+/**REDUX */
 
-export default withRouter(NavComponent);
+/**Number of clicks */
+const mapStateToProps = (state: IState)=> {
+  return{
+    clicks: state.clickerState.clicks
+  };
+};
+
+const mapDispatchToProps = {}; //not doing any dispatch here. leave empty
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavComponent));
