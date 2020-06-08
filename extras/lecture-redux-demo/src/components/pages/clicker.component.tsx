@@ -6,7 +6,7 @@ import { addClicks } from '../../redux/actions/clicker.actions'
 import { connect } from 'react-redux';
 
 /**Display information from the State */
-interface ClickerComponentProps{
+export interface ClickerComponentProps{ //export for test
     clicks: number; //counter
     addClicks: (clicks: number) => void; //function excepts number
 }

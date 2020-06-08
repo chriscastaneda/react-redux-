@@ -10,7 +10,7 @@ import { Pokemon } from '../../redux/models/Pokemon';
 import { getPokemon } from '../../remotes/poke.remote';
 
 /**Render clicks using redux */
-interface StoreComponent{
+export interface StoreComponentProps{ //export for testing
     clicks: number;
     pokemon: Pokemon | undefined;
     removeClicks: (clicks:number)=> void;
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   });
   
 
-export const StoreComponent:React.FC<StoreComponent> = (props)=> {
+export const StoreComponent:React.FC<StoreComponentProps> = (props)=> {
     const {pokemon} = props; //deconstruct props for easy naming
 
     const classes = useStyles(); //material-ui css
@@ -52,7 +52,10 @@ export const StoreComponent:React.FC<StoreComponent> = (props)=> {
                     pokeName={pokemon ? pokemon.name : undefined } 
                     pokeImg={pokemon ? pokemon.img :undefined } />
                 
-                <Button size="large" variant="contained" color="primary" disabled={props.clicks < 25} onClick={()=> buyPokemon()}>Buy Pokemon</Button>
+                <Button 
+                    size="large" variant="contained" color="primary" 
+                    disabled={props.clicks < 25} 
+                    onClick={()=> buyPokemon()}>Buy Pokemon</Button>
             </section>  
         </div>
     );
